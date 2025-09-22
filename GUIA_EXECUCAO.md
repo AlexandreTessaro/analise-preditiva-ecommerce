@@ -1,205 +1,267 @@
-# 🚀 GUIA DE EXECUÇÃO - Demonstrações Práticas
+# 🚀 Guia de Execução - Análise Preditiva E-commerce
 
-## 📋 Visão Geral
+## 📋 Pré-requisitos
 
-Este projeto contém **demonstrações práticas completas** de análise preditiva para um sistema de recomendação e-commerce, incluindo:
+### 1. Software Necessário
+- **Python 3.8+** - [Download](https://www.python.org/downloads/)
+- **MongoDB 4.4+** - [Download](https://www.mongodb.com/try/download/community)
+- **PostgreSQL 12+** - [Download](https://www.postgresql.org/download/)
+- **Git** - [Download](https://git-scm.com/downloads)
 
-- ✅ **Script Python completo** (`demo_completo.py`)
-- ✅ **API REST** (`api_demo.py`) 
-- ✅ **Dashboard interativo** (`dashboard_demo.py`)
-- ✅ **Scripts MongoDB** (`scripts/demo_mongodb.py`)
-- ✅ **Scripts PostgreSQL** (`scripts/demo_postgresql.py`)
+### 2. Instalação dos Bancos de Dados
 
-## 🎯 Demonstração Principal (Recomendada)
-
-### `demo_completo.py` - Demonstração Completa
-**Este é o script principal que você deve executar para a apresentação!**
-
+#### MongoDB (Windows)
 ```bash
+# Baixar e instalar MongoDB Community Server
+# Iniciar o serviço MongoDB
+net start MongoDB
+
+# Verificar se está rodando
+mongosh --version
+```
+
+#### PostgreSQL (Windows)
+```bash
+# Baixar e instalar PostgreSQL
+# Durante a instalação, definir senha para usuário 'postgres'
+# Criar banco de dados
+createdb -U postgres ecommerce_demo
+```
+
+#### MongoDB (Linux/Ubuntu)
+```bash
+# Instalar MongoDB
+sudo apt-get update
+sudo apt-get install -y mongodb
+
+# Iniciar MongoDB
+sudo systemctl start mongodb
+sudo systemctl enable mongodb
+
+# Verificar status
+sudo systemctl status mongodb
+```
+
+#### PostgreSQL (Linux/Ubuntu)
+```bash
+# Instalar PostgreSQL
+sudo apt-get update
+sudo apt-get install -y postgresql postgresql-contrib
+
+# Iniciar PostgreSQL
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+
+# Criar banco de dados
+sudo -u postgres createdb ecommerce_demo
+
+# Verificar status
+sudo systemctl status postgresql
+```
+
+## 🛠️ Instalação do Projeto
+
+### 1. Clone o Repositório
+```bash
+git clone https://github.com/seu-usuario/analise-preditiva-ecommerce.git
+cd analise-preditiva-ecommerce
+```
+
+### 2. Instalar Dependências Python
+```bash
+# Criar ambiente virtual (recomendado)
+python -m venv venv
+
+# Ativar ambiente virtual
+# Windows:
+venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
+
 # Instalar dependências
-pip install pandas numpy matplotlib seaborn scikit-learn
-
-# Executar demonstração completa
-python demo_completo.py
+pip install -r requirements.txt
 ```
 
-**O que este script faz:**
-- ✅ Cria dados simulados realistas (50 usuários, 10 produtos)
-- ✅ Análise descritiva completa
-- ✅ Clustering de usuários (K-Means)
-- ✅ Predição de churn (Random Forest)
-- ✅ Sistema de recomendações personalizadas
-- ✅ Visualizações interativas
-- ✅ Relatório final com insights
-
-**Resultados:**
-- 📊 Dashboard visual salvo como `dashboard_analise_preditiva_completo.png`
-- 📈 Análise completa no terminal
-- 🎯 Recomendações personalizadas para cada usuário
-
-## 🌐 Demonstrações Adicionais
-
-### 1. API REST (`api_demo.py`)
+### 3. Configurar Variáveis de Ambiente
 ```bash
-# Instalar FastAPI
-pip install fastapi uvicorn
+# Copiar arquivo de configuração
+cp config.env .env
 
-# Executar API
-python api_demo.py
+# Editar configurações se necessário
+nano .env
 ```
 
-**Acesse:**
-- 🌐 API: http://localhost:8000
-- 📚 Documentação: http://localhost:8000/docs
-- 🔍 Endpoints: `/usuarios`, `/recomendacoes/{id}`, `/analytics/overview`
+## 🎮 Execução
 
-### 2. Dashboard Interativo (`dashboard_demo.py`)
+### Opção 1: Execução Automática (Recomendada)
 ```bash
-# Instalar Streamlit
-pip install streamlit plotly
-
-# Executar dashboard
-streamlit run dashboard_demo.py
+# Executar script principal
+python main.py
 ```
 
-**Acesse:** http://localhost:8501
+Este script irá:
+- ✅ Verificar dependências
+- ✅ Conectar aos bancos de dados
+- ✅ Configurar dados de exemplo
+- ✅ Executar demonstrações MongoDB e PostgreSQL
+- ✅ Gerar dashboards e visualizações
+- ✅ Mostrar resumo dos resultados
 
-**Features:**
-- 📊 Métricas em tempo real
-- 🎯 Filtros interativos
-- 📈 Gráficos dinâmicos
-- 🎯 Sistema de recomendações
+### Opção 2: Execução Manual
 
-### 3. Scripts de Banco de Dados
-
-#### MongoDB (`scripts/demo_mongodb.py`)
+#### 1. Configurar Bancos de Dados
 ```bash
-# Instalar MongoDB e PyMongo
-pip install pymongo
+python scripts/setup_databases.py
+```
 
-# Executar (requer MongoDB rodando)
+#### 2. Executar Demonstração MongoDB
+```bash
 python scripts/demo_mongodb.py
 ```
 
-#### PostgreSQL (`scripts/demo_postgresql.py`)
+#### 3. Executar Demonstração PostgreSQL
 ```bash
-# Instalar PostgreSQL e psycopg2
-pip install psycopg2-binary
-
-# Executar (requer PostgreSQL rodando)
 python scripts/demo_postgresql.py
 ```
 
-## 📊 Dados Simulados
-
-Todos os scripts funcionam com **dados simulados realistas**:
-
-### Usuários (50)
-- **Segmentos:** high_value, medium_value, low_value, new_user
-- **Comportamento:** eventos, page_views, clicks, conversões
-- **Transações:** pedidos, valores, frequência
-
-### Produtos (10)
-- **Categorias:** smartphones, notebooks, tablets
-- **Marcas:** Apple, Samsung, Dell, Xiaomi, etc.
-- **Preços:** R$ 1.999 a R$ 8.999
-
-### Análises Implementadas
-- 🎯 **Clustering:** 3 grupos de usuários
-- 🤖 **Predição de Churn:** Random Forest
-- 🎯 **Recomendações:** Algoritmo híbrido
-- 📊 **Visualizações:** 6 gráficos diferentes
-
-## 🎯 Para a Apresentação
-
-### Opção 1: Demonstração Simples (Recomendada)
+#### 4. Executar Jupyter Notebook
 ```bash
-python demo_completo.py
+jupyter notebook notebooks/demo_analise_preditiva.ipynb
 ```
-- ✅ Funciona sem instalar bancos de dados
-- ✅ Demonstração completa em 2-3 minutos
-- ✅ Visualizações automáticas
-- ✅ Relatório final com insights
 
-### Opção 2: Demonstração Interativa
+## 📊 Resultados Esperados
+
+### Arquivos Gerados
+- `dashboard_mongodb.png` - Dashboard de análise MongoDB
+- `dashboard_postgresql.png` - Dashboard de análise PostgreSQL
+- `logs/app.log` - Logs da aplicação
+
+### Funcionalidades Demonstradas
+- ✅ **Análise Descritiva:** Comportamento de usuários e produtos
+- ✅ **Análise Preditiva:** Clustering K-Means e predição de churn
+- ✅ **Sistema de Recomendações:** Algoritmo colaborativo
+- ✅ **Visualizações:** Dashboards interativos
+- ✅ **Operações CRUD:** MongoDB e PostgreSQL
+- ✅ **Modelos de ML:** Random Forest para churn
+
+## 🔧 Troubleshooting
+
+### Problema: MongoDB não conecta
 ```bash
-streamlit run dashboard_demo.py
-```
-- ✅ Interface web interativa
-- ✅ Filtros dinâmicos
-- ✅ Gráficos interativos
-- ✅ Sistema de recomendações em tempo real
+# Verificar se está rodando
+# Windows:
+net start MongoDB
+# Linux:
+sudo systemctl start mongodb
 
-### Opção 3: API + Dashboard
+# Verificar logs
+# Windows: Verificar Event Viewer
+# Linux:
+sudo journalctl -u mongodb
+```
+
+### Problema: PostgreSQL não conecta
 ```bash
-# Terminal 1: API
-python api_demo.py
+# Verificar se está rodando
+# Windows: Verificar Services
+# Linux:
+sudo systemctl start postgresql
 
-# Terminal 2: Dashboard
-streamlit run dashboard_demo.py
-```
-- ✅ Arquitetura completa
-- ✅ API REST + Frontend
-- ✅ Demonstração profissional
-
-## 📁 Estrutura de Arquivos
-
-```
-analise_preditiva/
-├── demo_completo.py              # 🎯 DEMONSTRAÇÃO PRINCIPAL
-├── api_demo.py                   # 🌐 API REST
-├── dashboard_demo.py             # 📊 Dashboard interativo
-├── scripts/
-│   ├── demo_mongodb.py          # 🗄️ Demonstração MongoDB
-│   ├── demo_postgresql.py       # 🗄️ Demonstração PostgreSQL
-│   └── exemplos_praticos.py     # 📚 Exemplos de código
-├── docs/                        # 📚 Documentação completa
-├── models/                      # 🗄️ Modelos de dados
-├── data/                        # 📊 Dados de exemplo
-└── requirements.txt             # 📦 Dependências
+# Verificar logs
+# Linux:
+sudo journalctl -u postgresql
 ```
 
-## 🚀 Execução Rápida para Apresentação
-
-### 1. Preparação (2 minutos)
+### Problema: Erro de dependências Python
 ```bash
-# Instalar dependências básicas
-pip install pandas numpy matplotlib seaborn scikit-learn
+# Atualizar pip
+pip install --upgrade pip
 
-# Verificar se tudo está funcionando
-python -c "import pandas, numpy, matplotlib, seaborn, sklearn; print('✅ Todas as dependências OK!')"
+# Reinstalar dependências
+pip install -r requirements.txt --force-reinstall
+
+# Verificar versão do Python
+python --version
 ```
 
-### 2. Demonstração (3 minutos)
+### Problema: Erro de permissões
 ```bash
-# Executar demonstração principal
-python demo_completo.py
+# Linux: Dar permissões de execução
+chmod +x scripts/*.py
+chmod +x main.py
+
+# Windows: Executar como administrador se necessário
 ```
 
-### 3. Resultados
-- 📊 Gráfico salvo: `dashboard_analise_preditiva_completo.png`
-- 📈 Análise completa no terminal
-- 🎯 Recomendações personalizadas
-- 📋 Relatório final com insights
+## 📚 Documentação Adicional
 
-## 💡 Dicas para Apresentação
+### Conceitos Teóricos
+- [Tipos de Análise de Dados](docs/conceitos_analise.md)
+- [Domínio do Problema](docs/dominio_problema.md)
+- [Justificativa dos Bancos](docs/justificativa_bancos.md)
+- [Ambiente de Dados](docs/ambiente_dados.md)
 
-### Pontos Fortes a Destacar:
-1. **Dados Realistas:** 50 usuários com comportamento variado
-2. **Análise Completa:** Descritiva + Preditiva + Prescritiva
-3. **Tecnologias Modernas:** ML + Visualizações + APIs
-4. **Arquitetura Híbrida:** MongoDB + PostgreSQL
-5. **Sistema Funcional:** Recomendações personalizadas
+### Exemplos Práticos
+- [Modelos de Dados](models/modelos_dados.md)
+- [Manipulação de Dados](scripts/exemplos_manipulacao.md)
+- [Exemplos de Código](scripts/exemplos_praticos.py)
 
-### Demonstração Sugerida:
-1. **Executar** `python demo_completo.py`
-2. **Explicar** cada etapa da análise
-3. **Mostrar** visualizações geradas
-4. **Destacar** insights de negócio
-5. **Demonstrar** sistema de recomendações
+## 🎯 Avaliação N1
 
-## 🎉 Conclusão
+### Pontos Atendidos
+- **a) Tipos de Análise de Dados (0,5)** ✅
+- **b) Domínio de Problema (1,0)** ✅
+- **c) Justificativa dos Modelos (0,5)** ✅
+- **d) Modelos de Dados (0,5)** ✅
+- **e) Manipulação de Dados (0,5)** ✅
+- **f) Ambiente de Dados (1,0)** ✅
 
-Este projeto oferece uma **demonstração prática completa** de análise preditiva aplicada a um cenário real de e-commerce. Todos os scripts são executáveis e demonstram conceitos teóricos na prática.
+**Total: 4,0 pontos**
 
-**Recomendação:** Use `demo_completo.py` como demonstração principal - é completo, rápido e impressionante! 🚀
+### Domínio Escolhido
+**Sistema de Recomendação de Produtos E-commerce**
+- Classificação de usuários por comportamento
+- Predição de probabilidade de compra
+- Recomendação personalizada de produtos
+
+### Tecnologias Utilizadas
+- **MongoDB:** Dados não estruturados e comportamento
+- **PostgreSQL:** Dados transacionais e relatórios
+- **Data Lakehouse:** Ambiente para dados brutos e processados
+- **Python:** Análise de dados e machine learning
+
+## 🚀 Próximos Passos
+
+### Para N3 (Ciência de Dados)
+1. **Engenharia de Features:** Criar variáveis preditivas mais sofisticadas
+2. **Modelagem Avançada:** Implementar algoritmos de deep learning
+3. **Validação:** Testes A/B e métricas de negócio
+4. **Deploy:** Sistema em produção com monitoramento
+
+### Melhorias Futuras
+1. **Real-time:** Processamento em tempo real
+2. **Escalabilidade:** Suporte a milhões de usuários
+3. **Integração:** APIs REST e microserviços
+4. **Monitoramento:** Dashboards de produção
+
+## 📞 Suporte
+
+### Contato
+- **Email:** seu-email@exemplo.com
+- **GitHub Issues:** [Criar Issue](https://github.com/seu-usuario/analise-preditiva-ecommerce/issues)
+
+### FAQ
+- **P:** Como alterar a configuração dos bancos?
+- **R:** Edite o arquivo `.env` com suas configurações.
+
+- **P:** Posso usar outros bancos de dados?
+- **R:** Sim, mas será necessário adaptar os scripts de conexão.
+
+- **P:** Como escalar para mais usuários?
+- **R:** Configure MongoDB e PostgreSQL em cluster.
+
+---
+
+**Desenvolvido com ❤️ para a disciplina de Análise Preditiva - Engenharia de Software**
+
+*Última atualização: Janeiro 2025*
