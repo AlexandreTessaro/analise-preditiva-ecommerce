@@ -452,8 +452,8 @@ pip install -r requirements.txt --force-reinstall
 ## 📞 Suporte
 
 ### Contato
-- **Email:** seu-email@exemplo.com
-- **GitHub Issues:** [Criar Issue](https://github.com/seu-usuario/analise-preditiva-ecommerce/issues)
+- **Email:** alexandre.tassaro@gmail.com
+- **GitHub Issues:** [Criar Issue](https://github.com/alexandretessaro/analise-preditiva-ecommerce/issues)
 
 ### FAQ
 - **P:** Como alterar a configuração dos bancos de dados?
@@ -481,4 +481,4 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 **Desenvolvido com ❤️ para a disciplina de Análise Preditiva - Engenharia de Software**
 
-*Última atualização: Janeiro 2025*
+*Última atualização: 22/09/2025*
