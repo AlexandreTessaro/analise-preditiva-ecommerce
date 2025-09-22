@@ -452,6 +452,7 @@ pip install -r requirements.txt --force-reinstall
 ## 📞 Suporte
 
 ### Contato
+- **Desenvolvedor** - Alexandre Tessaro Vieira
 - **Email:** alexandre.tassaro@gmail.com
 - **GitHub Issues:** [Criar Issue](https://github.com/alexandretessaro/analise-preditiva-ecommerce/issues)
 
